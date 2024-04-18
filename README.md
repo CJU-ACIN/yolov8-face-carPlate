@@ -38,14 +38,14 @@ import cv2
 
 model = YOLO("best.pt")
 
-results = model.predict("image_test.jpg")
+results = model.predict("assets/image_test.jpg")
 
 for result in results:
-    result.save(filename="image_result.jpg")  # save to disk
+    result.save(filename="assets/image_result.jpg")  # save to disk
 
 
 cv2.namedWindow("result", flags=cv2.WINDOW_NORMAL)
-cv2.imshow("result", cv2.imread("image_result.jpg"))
+cv2.imshow("result", cv2.imread("assets/image_result.jpg"))
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
@@ -67,7 +67,7 @@ import cv2
 model = YOLO("best.pt")
 names = model.names
 
-cap = cv2.VideoCapture("test_video.mp4")
+cap = cv2.VideoCapture("assets/test_video.mp4")
 assert cap.isOpened(), "Error reading video file"
 w, h, fps = (
     int(cap.get(x))
@@ -79,7 +79,7 @@ blur_ratio = 50
 
 # Video writer
 video_writer = cv2.VideoWriter(
-    "test_video_result.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h)
+    "assets/test_video_result.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h)
 )
 
 while cap.isOpened():

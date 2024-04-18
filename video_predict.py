@@ -9,7 +9,7 @@ import cv2
 model = YOLO("best.pt")
 names = model.names
 
-cap = cv2.VideoCapture("test_video.mp4")
+cap = cv2.VideoCapture("assets/test_video.mp4")
 assert cap.isOpened(), "Error reading video file"
 w, h, fps = (
     int(cap.get(x))
@@ -21,7 +21,7 @@ blur_ratio = 50
 
 # Video writer
 video_writer = cv2.VideoWriter(
-    "test_video_result.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h)
+    "assets/test_video_result.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h)
 )
 
 while cap.isOpened():
