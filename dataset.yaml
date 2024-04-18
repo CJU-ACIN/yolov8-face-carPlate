@@ -1,6 +1,6 @@
 names:
     0: car_plate
     1: face
-test: /home/taeyoung3060/바탕화면/yolo/yolo_dataset/test
-train: /home/taeyoung3060/바탕화면/yolo/yolo_dataset/train
-val:
+test: /home/taeyoung3060/바탕화면/yolov8-face-carPlate/yolo_dataset/test
+train: /home/taeyoung3060/바탕화면/yolov8-face-carPlate/yolo_dataset/train
+val: /home/taeyoung3060/바탕화면/yolov8-face-carPlate/yolo_dataset/val
