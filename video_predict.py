@@ -6,12 +6,10 @@ from ultralytics import YOLO
 from ultralytics.utils.plotting import Annotator, colors
 import cv2
 
-model = YOLO(
-    "/home/taeyoung3060/바탕화면/yolov8-face-carPlate/runs/detect/train13/weights/best.pt"
-)
+model = YOLO("best.pt")
 names = model.names
 
-cap = cv2.VideoCapture("test_video4.mp4")
+cap = cv2.VideoCapture("test_video.mp4")
 assert cap.isOpened(), "Error reading video file"
 w, h, fps = (
     int(cap.get(x))
@@ -23,7 +21,7 @@ blur_ratio = 50
 
 # Video writer
 video_writer = cv2.VideoWriter(
-    "test_video4_result.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h)
+    "test_video_result.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h)
 )
 
 while cap.isOpened():
@@ -53,13 +51,13 @@ while cap.isOpened():
 
             im0[int(box[1]) : int(box[3]), int(box[0]) : int(box[2])] = blur_obj
 
-    # cv2.imshow("ultralytics", im0)
+    cv2.imshow("ultralytics", im0)
     video_writer.write(im0)
-    # if cv2.waitKey(1) & 0xFF == ord('q'):
-    #     break
+    if cv2.waitKey(1) & 0xFF == ord("q"):
+        break
 
 cap.release()
 video_writer.release()
-# cv2.destroyAllWindows()
+cv2.destroyAllWindows()
 
 print(f"Total time taken: {time() - start_time:.2f} seconds")
